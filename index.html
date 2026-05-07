@@ -521,41 +521,20 @@
 </footer>
 
 <script>
-  /*
-   * TODO: Vervang deze functie met een echte Airtable koppeling.
-   *
-   * Stap 1: Maak een Airtable base aan met een tabel "Wachtlijst"
-   *         en een veld "Email".
-   * Stap 2: Haal je API key op via airtable.com/create/tokens
-   * Stap 3: Vervang AIRTABLE_API_KEY en AIRTABLE_BASE_ID hieronder.
-   *
-   */
-   async function submitToAirtable(email) {
-     await fetch('https://api.airtable.com/v0/appukRdDLnaX8JRoy/Wachtlijst', {
-       method: 'POST',
-       headers: {
-         'Authorization': 'Bearer xx',
-         'Content-Type': 'application/json'
-       },
-       body: JSON.stringify({ fields: { Email: email } })
-     });
-   }
-
+  const FORMSPARK_URL = 'https://submit-form.com/8Hw2wvOmf';
   const waitlist = [];
   let count = 47;
 
-  function signUp(source) {
+  async function signUp(source) {
     const input = document.getElementById(source === 'hero' ? 'hero-email' : 'cta-email');
     const success = document.getElementById(source === 'hero' ? 'hero-success' : 'cta-success');
+    const btn = input.nextElementSibling;
     const email = input.value.trim();
 
     if (!email || !email.includes('@')) {
       input.style.borderColor = '#e24b4a';
       input.placeholder = 'Voer een geldig e-mailadres in';
-      setTimeout(() => {
-        input.style.borderColor = '';
-        input.placeholder = 'jouw@email.nl';
-      }, 2000);
+      setTimeout(() => { input.style.borderColor = ''; input.placeholder = 'jouw@email.com'; }, 2000);
       return;
     }
 
@@ -563,22 +542,34 @@
       input.style.borderColor = '#e24b4a';
       input.value = '';
       input.placeholder = 'Al aangemeld!';
-      setTimeout(() => {
-        input.style.borderColor = '';
-        input.placeholder = 'jouw@email.nl';
-      }, 2000);
+      setTimeout(() => { input.style.borderColor = ''; input.placeholder = 'jouw@email.com'; }, 2000);
       return;
     }
 
-    waitlist.push(email);
-    count++;
-    document.getElementById('counter-display').textContent = count;
-    input.value = '';
-    success.style.display = 'block';
-    setTimeout(() => { success.style.display = 'none'; }, 4000);
+    btn.textContent = '...';
+    btn.disabled = true;
 
-    /* Uncomment zodra Airtable is ingesteld: */
-    /* submitToAirtable(email); */
+    try {
+      await fetch(FORMSPARK_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify({ email: email, _redirect: false })
+      });
+
+      waitlist.push(email);
+      count++;
+      document.getElementById('counter-display').textContent = count;
+      input.value = '';
+      success.style.display = 'block';
+      setTimeout(() => { success.style.display = 'none'; }, 4000);
+    } catch (err) {
+      input.style.borderColor = '#e24b4a';
+      input.placeholder = 'Er ging iets mis, probeer opnieuw';
+      setTimeout(() => { input.style.borderColor = ''; input.placeholder = 'jouw@email.com'; }, 3000);
+    }
+
+    btn.textContent = 'Aanmelden →';
+    btn.disabled = false;
   }
 </script>
 </body>
