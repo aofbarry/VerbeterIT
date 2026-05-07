@@ -408,6 +408,55 @@
   }
 
   #counter-display { font-weight: 600; color: var(--accent); }
+
+  .intake-form { display: flex; flex-direction: column; gap: 12px; }
+  .form-row { display: flex; }
+  .intake-form input, .intake-form textarea,
+  .cta-intake input, .cta-intake textarea {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    background: var(--bg);
+    color: var(--ink);
+    outline: none;
+    transition: border-color 0.2s;
+    resize: vertical;
+  }
+  .intake-form input:focus, .intake-form textarea:focus { border-color: var(--accent2); }
+  .btn-full { width: 100%; justify-content: center; }
+  .cta-intake {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+  .cta-intake input, .cta-intake textarea {
+    background: rgba(255,255,255,0.08);
+    border-color: rgba(255,255,255,0.15);
+    color: white;
+  }
+  .cta-intake input::placeholder, .cta-intake textarea::placeholder { color: rgba(255,255,255,0.35); }
+  .cta-intake input:focus, .cta-intake textarea:focus { border-color: var(--accent2); }
+
+  .service-card--highlight {
+    border-color: var(--accent2);
+    background: linear-gradient(135deg, #f0faf5 0%, #ffffff 100%);
+  }
+  .onsite-badge {
+    display: inline-block;
+    margin-top: 12px;
+    background: var(--accent-light);
+    color: var(--accent);
+    font-size: 12px;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 20px;
+    border: 1px solid rgba(26,107,74,0.15);
+  }
 </style>
 </head>
 <body>
@@ -417,41 +466,22 @@
   <div style="display:flex; align-items:center; gap:24px;">
     <a href="#diensten">Diensten</a>
     <a href="#werkwijze">Werkwijze</a>
-    <a href="#wachtlijst" class="nav-cta">Aanmelden</a>
+    <a href="#contact" class="nav-cta">Gratis gesprek</a>
   </div>
 </nav>
 
 <div class="hero">
-  <div class="badge">Nu beschikbaar voor early access</div>
   <h1>Slimmer werken,<br><em>niet harder.</em></h1>
-  <p class="hero-sub">Stroomlyn automatiseert uw workflows, integreert uw systemen en implementeert AI-oplossingen — zodat u zich kunt richten op wat écht telt.</p>
-
-  <div class="waitlist-box" id="wachtlijst">
-    <h3>Meld je aan voor de wachtlijst</h3>
-    <p>Ontvang als eerste toegang en exclusieve early-bird voorwaarden.</p>
-    <div class="input-row">
-      <input type="email" id="hero-email" placeholder="jouw@email.com" />
-      <button class="btn-primary" onclick="signUp('hero')">Aanmelden →</button>
-    </div>
-    <div class="success-msg" id="hero-success">✓ Gelukt! We nemen snel contact op.</div>
-    <div class="social-proof">
-      <div class="avatars">
-        <div class="av av1">JV</div>
-        <div class="av av2">MK</div>
-        <div class="av av3">SR</div>
-        <div class="av av4">PD</div>
-      </div>
-      <span><span id="counter-display">47</span> bedrijven gingen je voor</span>
-    </div>
-  </div>
+  <p class="hero-sub">Van workflow-automatisatie en AI-oplossingen tot software-installaties en hardware-inrichting — Stroomlyn pakt het aan. Geen probleem te klein, geen uitdaging te groot.</p>
+  <a href="#contact" class="btn-primary" style="display:inline-block; margin-top:8px; text-decoration:none; padding: 14px 28px; font-size:16px;">Plan een gratis gesprek →</a>
 </div>
 
 <hr class="divider">
 
 <section id="diensten">
   <p class="section-label">Wat we doen</p>
-  <h2 class="section-title">Vier pijlers, één doel:<br>uw bedrijf op stroom.</h2>
-  <p class="section-sub">Van losse scripts tot volledige AI-implementaties — wij pakken het aan.</p>
+  <h2 class="section-title">Vijf pijlers, één doel:<br>uw bedrijf op stroom.</h2>
+  <p class="section-sub">Van losse scripts tot volledige AI-implementaties — wij pakken het aan. Geen klus te klein, geen vraagstuk te complex.</p>
 
   <div class="services-grid">
     <div class="service-card">
@@ -473,6 +503,12 @@
       <div class="svc-icon">📈</div>
       <h4>Procesoptimalisatie</h4>
       <p>Uw processen in kaart brengen, knelpunten identificeren en verbeteren met bewezen methoden.</p>
+    </div>
+    <div class="service-card service-card--highlight">
+      <div class="svc-icon">🖥️</div>
+      <h4>Installatie & Configuratie</h4>
+      <p>Van software-uitrol tot hardware-inrichting — wij komen on-site bij u langs en zorgen dat alles staat en werkt. Geen gedoe, gewoon klaar.</p>
+      <span class="onsite-badge">📍 On-site bij de klant</span>
     </div>
   </div>
 </section>
@@ -503,15 +539,17 @@
   </div>
 </section>
 
-<div class="cta-section">
-  <p class="section-label">Early access</p>
-  <h2 class="section-title">Klaar om uw bedrijf te stroomlijnen?</h2>
-  <p class="section-sub">Schrijf u in voor de wachtlijst en ontvang als eerste onze lanceringsaanbiedingen.</p>
-  <div class="cta-input-row">
+<div class="cta-section" id="contact">
+  <p class="section-label">Gratis gesprek</p>
+  <h2 class="section-title">Waar loopt u tegenaan?</h2>
+  <p class="section-sub">Of het nu gaat om een kleine instelling of een volledig automatiseringsproject — stuur een aanvraag en ik denk met u mee. Binnen 1 werkdag neem ik contact op.</p>
+  <div class="cta-intake">
+    <input type="text" id="cta-naam" placeholder="Jouw naam" />
     <input type="email" id="cta-email" placeholder="jouw@email.com" />
-    <button class="btn-primary" onclick="signUp('cta')">Aanmelden →</button>
+    <textarea id="cta-vraag" placeholder="Beschrijf je vraag of situatie — groot of klein, alles is welkom." rows="3"></textarea>
+    <button class="btn-primary" onclick="submitIntakeCta()">Verstuur aanvraag →</button>
   </div>
-  <div class="success-msg" id="cta-success" style="max-width:460px; margin: 12px auto 0; background: rgba(255,255,255,0.08); color: #5ddca5; border-color: rgba(93,220,165,0.2);">✓ Gelukt! We nemen snel contact op.</div>
+  <div class="success-msg" id="cta-success" style="max-width:500px; margin: 12px auto 0; background: rgba(255,255,255,0.08); color: #5ddca5; border-color: rgba(93,220,165,0.2);">✓ Ontvangen! Ik neem binnen 1 werkdag contact op.</div>
 </div>
 
 <footer class="footer">
@@ -522,54 +560,60 @@
 
 <script>
   const FORMSPARK_URL = 'https://submit-form.com/8Hw2wvOmf';
-  const waitlist = [];
   let count = 47;
 
-  async function signUp(source) {
-    const input = document.getElementById(source === 'hero' ? 'hero-email' : 'cta-email');
-    const success = document.getElementById(source === 'hero' ? 'hero-success' : 'cta-success');
-    const btn = input.nextElementSibling;
-    const email = input.value.trim();
+  async function submitForm(naam, email, vraag, btnEl, successId) {
+    if (!naam) { alert('Vul je naam in.'); return; }
+    if (!email || !email.includes('@')) { alert('Vul een geldig e-mailadres in.'); return; }
+    if (!vraag) { alert('Beschrijf kort je vraag of situatie.'); return; }
 
-    if (!email || !email.includes('@')) {
-      input.style.borderColor = '#e24b4a';
-      input.placeholder = 'Voer een geldig e-mailadres in';
-      setTimeout(() => { input.style.borderColor = ''; input.placeholder = 'jouw@email.com'; }, 2000);
-      return;
-    }
-
-    if (waitlist.includes(email)) {
-      input.style.borderColor = '#e24b4a';
-      input.value = '';
-      input.placeholder = 'Al aangemeld!';
-      setTimeout(() => { input.style.borderColor = ''; input.placeholder = 'jouw@email.com'; }, 2000);
-      return;
-    }
-
-    btn.textContent = '...';
-    btn.disabled = true;
+    btnEl.textContent = '...';
+    btnEl.disabled = true;
 
     try {
       await fetch(FORMSPARK_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-        body: JSON.stringify({ email: email, _redirect: false })
+        body: JSON.stringify({ naam, email, vraag, _redirect: false })
       });
 
-      waitlist.push(email);
       count++;
-      document.getElementById('counter-display').textContent = count;
-      input.value = '';
+      const counter = document.getElementById('counter-display');
+      if (counter) counter.textContent = count;
+
+      const success = document.getElementById(successId);
       success.style.display = 'block';
-      setTimeout(() => { success.style.display = 'none'; }, 4000);
+      setTimeout(() => { success.style.display = 'none'; }, 5000);
     } catch (err) {
-      input.style.borderColor = '#e24b4a';
-      input.placeholder = 'Er ging iets mis, probeer opnieuw';
-      setTimeout(() => { input.style.borderColor = ''; input.placeholder = 'jouw@email.com'; }, 3000);
+      alert('Er ging iets mis. Probeer het opnieuw.');
     }
 
-    btn.textContent = 'Aanmelden →';
-    btn.disabled = false;
+    btnEl.textContent = 'Verstuur aanvraag →';
+    btnEl.disabled = false;
+  }
+
+  function submitIntake() {
+    const naam = document.getElementById('intake-naam').value.trim();
+    const email = document.getElementById('intake-email').value.trim();
+    const vraag = document.getElementById('intake-vraag').value.trim();
+    const btn = document.querySelector('#wachtlijst .btn-full');
+    submitForm(naam, email, vraag, btn, 'intake-success').then(() => {
+      document.getElementById('intake-naam').value = '';
+      document.getElementById('intake-email').value = '';
+      document.getElementById('intake-vraag').value = '';
+    });
+  }
+
+  function submitIntakeCta() {
+    const naam = document.getElementById('cta-naam').value.trim();
+    const email = document.getElementById('cta-email').value.trim();
+    const vraag = document.getElementById('cta-vraag').value.trim();
+    const btn = document.querySelector('.cta-intake .btn-primary');
+    submitForm(naam, email, vraag, btn, 'cta-success').then(() => {
+      document.getElementById('cta-naam').value = '';
+      document.getElementById('cta-email').value = '';
+      document.getElementById('cta-vraag').value = '';
+    });
   }
 </script>
 </body>
