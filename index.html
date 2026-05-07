@@ -529,17 +529,17 @@
    * Stap 2: Haal je API key op via airtable.com/create/tokens
    * Stap 3: Vervang AIRTABLE_API_KEY en AIRTABLE_BASE_ID hieronder.
    *
-   * async function submitToAirtable(email) {
-   *   await fetch('https://api.airtable.com/v0/AIRTABLE_BASE_ID/Wachtlijst', {
-   *     method: 'POST',
-   *     headers: {
-   *       'Authorization': 'Bearer AIRTABLE_API_KEY',
-   *       'Content-Type': 'application/json'
-   *     },
-   *     body: JSON.stringify({ fields: { Email: email } })
-   *   });
-   * }
    */
+   async function submitToAirtable(email) {
+     await fetch('https://api.airtable.com/v0/appukRdDLnaX8JRoy/Wachtlijst', {
+       method: 'POST',
+       headers: {
+         'Authorization': 'Bearer xx',
+         'Content-Type': 'application/json'
+       },
+       body: JSON.stringify({ fields: { Email: email } })
+     });
+   }
 
   const waitlist = [];
   let count = 47;
