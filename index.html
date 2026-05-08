@@ -605,7 +605,9 @@
   <div style="display:flex; align-items:center; gap:24px;">
     <a href="#diensten">Diensten</a>
     <a href="#werkwijze">Werkwijze</a>
+    <a href="#pakketten">Pakketten</a>
     <a href="#contact" class="nav-cta">Gratis gesprek</a>
+</div>
   </div>
 </nav>
 
@@ -791,18 +793,6 @@
 
     btnEl.textContent = 'Verstuur aanvraag →';
     btnEl.disabled = false;
-  }
-
-  function submitIntake() {
-    const naam = document.getElementById('intake-naam').value.trim();
-    const email = document.getElementById('intake-email').value.trim();
-    const vraag = document.getElementById('intake-vraag').value.trim();
-    const btn = document.querySelector('#wachtlijst .btn-full');
-    submitForm(naam, email, vraag, btn, 'intake-success').then(() => {
-      document.getElementById('intake-naam').value = '';
-      document.getElementById('intake-email').value = '';
-      document.getElementById('intake-vraag').value = '';
-    });
   }
 
   function submitIntakeCta() {
