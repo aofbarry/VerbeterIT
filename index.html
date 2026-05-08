@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
 <title>VerbeterIT — Meer flow. Minder handwerk.</title>
 
 <!-- SEO -->
@@ -490,6 +491,103 @@
     border-radius: 20px;
     border: 1px solid rgba(26,107,74,0.15);
   }
+  .packages-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+    margin-top: 48px;
+  }
+  .package-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 28px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+  .package-card:hover { border-color: var(--accent2); transform: translateY(-3px); }
+  .package-card--featured {
+    border-color: var(--accent);
+    background: linear-gradient(135deg, #f0faf5 0%, #ffffff 100%);
+    position: relative;
+  }
+  .package-badge {
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--accent);
+    color: white;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 4px 12px;
+    border-radius: 20px;
+    white-space: nowrap;
+  }
+  .package-name {
+    font-family: 'DM Serif Display', serif;
+    font-size: 22px;
+    letter-spacing: -0.5px;
+    color: var(--ink);
+  }
+  .package-price {
+    font-size: 28px;
+    font-weight: 600;
+    color: var(--accent);
+    letter-spacing: -1px;
+  }
+  .package-price span {
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--muted);
+  }
+  .package-desc {
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.6;
+    flex: 1;
+  }
+  .package-features {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .package-features li {
+    font-size: 13px;
+    color: var(--ink2);
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  .package-features li::before {
+    content: '✓';
+    color: var(--accent);
+    font-weight: 600;
+    flex-shrink: 0;
+  }
+  .package-cta {
+    display: block;
+    text-align: center;
+    background: var(--accent-light);
+    color: var(--accent);
+    border: 1px solid rgba(26,107,74,0.2);
+    border-radius: 8px;
+    padding: 10px;
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: background 0.2s;
+    cursor: pointer;
+  }
+  .package-cta:hover { background: var(--accent); color: white; }
+  .package-card--featured .package-cta {
+    background: var(--accent);
+    color: white;
+  }
+  .package-card--featured .package-cta:hover { background: #155a3e; }
 </style>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-FSZKNHED2B"></script>
@@ -576,6 +674,69 @@
       <div class="step-num">03</div>
       <h4>Live & doorgroeien</h4>
       <p>Implementatie, training en doorlopende optimalisatie. U groeit, wij schalen mee.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section id="pakketten">
+  <p class="section-label">Pakketten</p>
+  <h2 class="section-title">Kies wat bij u past.</h2>
+  <p class="section-sub">Eenmalig, per project. Geen verrassingen achteraf.</p>
+
+  <div class="packages-grid">
+    <div class="package-card">
+      <div class="package-name">Basis</div>
+      <div class="package-price">€75 <span>/ project</span></div>
+      <p class="package-desc">Voor kleine klussen en gerichte oplossingen. Snel geregeld, geen gedoe.</p>
+      <ul class="package-features">
+        <li>Software installatie & configuratie</li>
+        <li>Hardware inrichting</li>
+        <li>On-site bij de klant</li>
+        <li>Binnen 2 werkdagen</li>
+      </ul>
+      <a href="#contact" class="package-cta">Aanvragen →</a>
+    </div>
+
+    <div class="package-card package-card--featured">
+      <div class="package-badge">Meest gekozen</div>
+      <div class="package-name">Slim</div>
+      <div class="package-price">€199 <span>/ project</span></div>
+      <p class="package-desc">Eén gerichte automatisering of integratie die direct tijd bespaart.</p>
+      <ul class="package-features">
+        <li>Script of workflow automatisatie</li>
+        <li>Eén API-koppeling</li>
+        <li>Procesanalyse inbegrepen</li>
+        <li>Oplevering binnen 1 week</li>
+      </ul>
+      <a href="#contact" class="package-cta">Aanvragen →</a>
+    </div>
+
+    <div class="package-card">
+      <div class="package-name">Slimmer</div>
+      <div class="package-price">€399 <span>/ project</span></div>
+      <p class="package-desc">Meerdere diensten gecombineerd voor een completere oplossing.</p>
+      <ul class="package-features">
+        <li>Meerdere koppelingen & scripts</li>
+        <li>AI-integratie mogelijk</li>
+        <li>Procesoptimalisatie</li>
+        <li>Uitgebreide oplevering & uitleg</li>
+      </ul>
+      <a href="#contact" class="package-cta">Aanvragen →</a>
+    </div>
+
+    <div class="package-card">
+      <div class="package-name">Volledig ontzorgd</div>
+      <div class="package-price">Op aanvraag</div>
+      <p class="package-desc">Volledig traject van analyse tot implementatie. U hoeft nergens naar om te kijken.</p>
+      <ul class="package-features">
+        <li>Volledige procesanalyse</li>
+        <li>Maatwerk automatisering & AI</li>
+        <li>Installatie, configuratie & training</li>
+        <li>Doorlopende optimalisatie</li>
+      </ul>
+      <a href="#contact" class="package-cta">Neem contact op →</a>
     </div>
   </div>
 </section>
